@@ -310,6 +310,9 @@ startup
     };
     vars.splits[3] = new Dictionary<string, Func<string, dynamic, dynamic, bool>>()
     {
+        {"Ch4_EnterCastleTown", (ver, org, cur) => org.roomName == "room_schooldoor_ch4" && cur.roomName == "room_dw_castle_area_1"},
+        {"Ch4_StartMike",       (ver, org, cur) => cur.roomName == "room_dw_castle_tv_zone_battle_ch4" && org.fight == 0 && cur.fight == 1},
+        {"Ch4_EndMike",         (ver, org, cur) => cur.roomName == "room_dw_castle_tv_zone_battle_ch4" && org.fight == 1 && cur.fight == 0},
         {"Ch4_EnterDW",         (ver, org, cur) => (org.roomName == "room_torhouse_ch4" || org.roomName == "room_town_church_ch4") && cur.roomName == "room_dw_church_intro1_ch4"},
         {"Ch4_EnterStudy",      (ver, org, cur) => org.roomName == "room_dw_church_darkmaze_ch4" && cur.roomName == "room_dw_church_gersonstudy_ch4"},
         {"Ch4_Jackenstein",     (ver, org, cur) => cur.roomName == "room_dw_church_jackenstein_ch4" && org.fight == 1 && cur.fight == 0},
@@ -493,9 +496,16 @@ startup
 
     settings.Add("Ch4_AB", false, "All Bosses Splits");
     settings.CurrentDefaultParent = "Ch4_AB";
-     settings.Add("Ch4_GoldenPiano",     false, "Solve the Golden Piano puzzle");
-     settings.Add("Ch4_HammerofJustice", false, "End Hammer of Justice battle");
-      settings.SetToolTip("Ch4_HammerofJustice", @"This autosplit does not work if you remove Wise words from the game files (mus\gerson_defeated.ogg).");
+    settings.Add("Ch4_GoldenPiano",     false, "Solve the Golden Piano puzzle");
+    settings.Add("Ch4_HammerofJustice", false, "End Hammer of Justice battle");
+    settings.SetToolTip("Ch4_HammerofJustice", @"This autosplit does not work if you remove Wise words from the game files (mus\gerson_defeated.ogg).");
+    settings.CurrentDefaultParent = "Ch4";
+
+    settings.Add("Ch4_Mike", false, "Mike% Splits");
+    settings.CurrentDefaultParent = "Ch4_Mike";
+    settings.Add("Ch4_EnterCastleTown", false, "Enter Castle Town from School");
+    settings.Add("Ch4_StartMike", false, "Start Mike battle");
+    settings.Add("Ch4_EndMike", false, "End Mike battle");
 }
 
 exit
